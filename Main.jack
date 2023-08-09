@@ -1,0 +1,87 @@
+class Main{
+    function void main(){
+        // var Ball b;
+        // let b = Ball.new();
+        // do Sys.wait(2000);
+        // return;
+
+
+        do Main.Game();
+        // var Score score;  ------  ------ 
+
+        return;
+    }
+
+    function void Game() {
+
+        // TODO play only until esc or Q press. ------  ------ 
+        var boolean gameOn;
+        let gameOn = true;
+
+
+        // Prints the custom tutorial.
+        // Only once...
+        // do Tutorial.print();
+
+        while (gameOn) {
+            // start / restart the game play.
+            do Main.gamePlay();
+            // TODO recive a key press. ------  ------ 
+        }
+        return;
+    }
+
+    function void gamePlay() {
+        // Game variavles
+        var Basket basket;
+        var Ball ball; 
+        var int lives, shotStatus;
+        var boolean keyPressed;
+
+        let lives = 3;
+        let shotStatus = 0;
+        let keyPressed = false;
+
+
+        // Create new game's objects.
+        let basket = Basket.new();
+        let ball = Ball.new(); 
+
+        // TODO: play while you have live.  ------  ------ 
+        while (lives > 0) {
+            // basket move, default speed 0.
+            do basket.move();
+
+            if (keyPressed) {
+                let shotStatus = ball.throwBall(basket.getX());
+                if (~(shotStatus = 2)) {
+                    let keyPressed = false;
+                    // --add score
+                    if(shotStatus = 1) {
+                        //increse movement each score() 
+                        do basket.incSpeed(1);
+                    } else {
+                        let lives = lives - 1;
+                    }                
+                    
+                }
+            }
+            
+
+            if (Keyboard.keyPressed() = 32) {
+                let keyPressed = true;
+            }
+
+        }
+
+
+        // TODO gameover page ------  ------ 
+
+        // Clear the screen.
+        do basket.clear();
+        // do ball.clear();
+
+        return;
+    }
+
+}
